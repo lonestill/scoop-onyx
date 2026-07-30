@@ -1,0 +1,46 @@
+name: Test manifests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        shell:
+          - powershell
+          - pwsh
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    steps:
+      - name: Check out bucket
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 2
+          path: bucket_repo
+
+      - name: Check out Scoop
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: ScoopInstaller/Scoop
+          path: scoop_core
+
+      - name: Install and cache test dependencies
+        uses: potatoqualitee/psmodulecache@ee5e9494714abf56f6efbfa51527b2aec5c761b8
+        with:
+          modules-to-cache: BuildHelpers, Pester
+          shell: ${{ matrix.shell }}
+
+      - name: Run Scoop bucket tests
+        run: |
+          $env:SCOOP_HOME = Convert-Path '.\scoop_core'
+          .\bucket_repo\bin\test.ps1
