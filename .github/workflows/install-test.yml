@@ -1,0 +1,30 @@
+name: Test installation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: windows-latest
+    steps:
+      - name: Install Scoop
+        shell: powershell
+        run: |
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+          Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+      - name: Install and remove Onyx Launcher
+        shell: powershell
+        run: |
+          scoop bucket add onyx https://github.com/lonestill/scoop-onyx
+          scoop install onyx/onyx-launcher
+
+          $installPath = scoop prefix onyx-launcher
+          if (-not (Test-Path -LiteralPath "$installPath\OnyxLauncher.exe")) {
+              throw 'The portable executable was not installed.'
+          }
+
+          scoop uninstall onyx-launcher
