@@ -6,13 +6,13 @@
     "notes": "Windows builds are currently unsigned, so SmartScreen may display a warning.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/lonestill/onyx-launcher/releases/download/v1.6.3/Onyx.Launcher.1.6.3.exe#/Onyx Launcher.exe",
+            "url": "https://github.com/lonestill/onyx-launcher/releases/download/v1.6.3/Onyx.Launcher.1.6.3.exe#/OnyxLauncher.exe",
             "hash": "35c474b75a509d32b64ef566374ea87fc9c3512861e697f48d12a8f23adcfad3"
         }
     },
     "shortcuts": [
         [
-            "Onyx Launcher.exe",
+            "OnyxLauncher.exe",
             "Onyx Launcher"
         ]
     ],
@@ -22,7 +22,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/lonestill/onyx-launcher/releases/download/v$version/Onyx.Launcher.$version.exe#/Onyx Launcher.exe"
+                "url": "https://github.com/lonestill/onyx-launcher/releases/download/v$version/Onyx.Launcher.$version.exe#/OnyxLauncher.exe"
             }
         }
     }
