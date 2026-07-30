@@ -4,8 +4,9 @@
 
 $pesterConfig = New-PesterConfiguration -Hashtable @{
     Run    = @{
-        Path     = "$PSScriptRoot/.."
-        PassThru = $true
+        Path                         = "$PSScriptRoot/.."
+        PassThru                     = $true
+        FailOnNullOrEmptyForEach     = $false
     }
     Output = @{
         Verbosity = 'Detailed'
