@@ -1,5 +1,7 @@
 # Onyx Launcher Scoop bucket
 
+[![Test manifests](https://github.com/lonestill/scoop-onyx/actions/workflows/ci.yml/badge.svg)](https://github.com/lonestill/scoop-onyx/actions/workflows/ci.yml)
+
 This bucket provides the official portable Windows build of
 [Onyx Launcher](https://lonestill.github.io), an open-source Minecraft launcher.
 

@@ -1,6 +1,6 @@
 {
     "version": "1.6.3",
-    "description": "Open-source Minecraft launcher with isolated instances, Modrinth integration, automatic Java, crash diagnostics, and safe backups.",
+    "description": "Modern open-source Minecraft launcher with isolated instances, Modrinth integration, automatic Java, crash diagnostics, and safe backups.",
     "homepage": "https://lonestill.github.io",
     "license": "MIT",
     "notes": "Windows builds are currently unsigned, so SmartScreen may display a warning.",
