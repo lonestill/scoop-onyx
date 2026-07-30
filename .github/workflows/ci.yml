@@ -34,11 +34,11 @@ jobs:
           repository: ScoopInstaller/Scoop
           path: scoop_core
 
-      - name: Install and cache test dependencies
-        uses: potatoqualitee/psmodulecache@ee5e9494714abf56f6efbfa51527b2aec5c761b8
-        with:
-          modules-to-cache: BuildHelpers, Pester
-          shell: ${{ matrix.shell }}
+      - name: Install test dependencies
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module BuildHelpers -Scope CurrentUser -Force
+          Install-Module Pester -Scope CurrentUser -Force
 
       - name: Run Scoop bucket tests
         run: |
