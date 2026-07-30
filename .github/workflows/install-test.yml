@@ -19,12 +19,13 @@ jobs:
       - name: Install and remove Onyx Launcher
         shell: powershell
         run: |
-          scoop bucket add onyx https://github.com/lonestill/scoop-onyx
-          scoop install onyx/onyx-launcher
+          $scoop = "$env:USERPROFILE\scoop\shims\scoop.cmd"
+          & $scoop bucket add onyx https://github.com/lonestill/scoop-onyx
+          & $scoop install onyx/onyx-launcher
 
-          $installPath = scoop prefix onyx-launcher
+          $installPath = & $scoop prefix onyx-launcher
           if (-not (Test-Path -LiteralPath "$installPath\OnyxLauncher.exe")) {
               throw 'The portable executable was not installed.'
           }
 
-          scoop uninstall onyx-launcher
+          & $scoop uninstall onyx-launcher
